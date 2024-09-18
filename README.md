@@ -1,4 +1,4 @@
-#### Front-end PC projet: Marchandises de Selection
+## Front-end PC projet: Marchandises de Selection
 
 #### Architecture technique : HTML+CSS+LESS+JS
 
