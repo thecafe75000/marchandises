@@ -1,0 +1,167 @@
+#wrapper #header .headTop {
+  height: 30px;
+  background: #eaeaea;
+}
+#wrapper #header .headTop .headTopMain {
+  width: 1200px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0 auto;
+}
+#wrapper #header .headTop .headTopMain .left {
+  height: 30px;
+  display: flex;
+  align-items: center;
+}
+#wrapper #header .headTop .headTopMain .left h5 {
+  margin-right: 5px;
+}
+#wrapper #header .headTop .headTopMain .left p {
+  display: flex;
+  align-items: center;
+}
+#wrapper #header .headTop .headTopMain .left p a {
+  padding-left: 5px;
+}
+#wrapper #header .headTop .headTopMain .left p i {
+  display: inline-block;
+  border-right: 1px solid #b3aeae;
+  color: transparent;
+}
+#wrapper #header .headTop .headTopMain .right {
+  height: 30px;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+#wrapper #header .headTop .headTopMain .right nav {
+  display: flex;
+  align-items: center;
+}
+#wrapper #header .headTop .headTopMain .right nav a {
+  margin-right: 10px;
+  border-right: 1px solid #b3aeae;
+  padding-right: 10px;
+}
+#wrapper #header .headTop .headTopMain .right nav a:last-child {
+  border: none;
+  margin-right: 0;
+  padding-right: 0;
+}
+#wrapper #header .headBottom .headBottomMain {
+  width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+#wrapper #header .headBottom .headBottomMain .logo {
+  display: flex;
+}
+#wrapper #header .headBottom .headBottomMain .logo a img {
+  width: 175px;
+  height: 56px;
+  margin: 25px 45px;
+}
+#wrapper #header .headBottom .headBottomMain .search {
+  display: flex;
+}
+#wrapper #header .headBottom .headBottomMain .search input:first-child {
+  box-sizing: border-box;
+  width: 490px;
+  height: 32px;
+  padding: 0 4px;
+  border: 3px solid #ea4a36;
+}
+#wrapper #header .headBottom .headBottomMain .search input:last-child {
+  width: 68px;
+  height: 32px;
+  color: #fff;
+  background: #ea4a36;
+  border: none;
+}
+#wrapper #header .headBottom .headBottomMain .search input::-webkit-input-placeholder {
+  color: yellowgreen;
+}
+#wrapper #navWrap {
+  border-bottom: 2px solid #e1251b;
+}
+#wrapper #navWrap .navWrapMain {
+  width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+}
+#wrapper #navWrap .navWrapMain a {
+  margin: 0 22px;
+  font-size: 16px;
+  color: #333;
+}
+#wrapper #navWrap .navWrapMain a:first-child {
+  width: 210px;
+  height: 50px;
+  line-height: 50px;
+  text-align: center;
+  background: #e1251b;
+  color: #fff;
+  font-weight: bold;
+}
+#wrapper #content .contentMain {
+  width: 1200px;
+  margin: 15px auto 0 auto;
+}
+#wrapper #content .contentMain .navPath {
+  padding: 9px 15px 9px 0;
+  font-size: 0;
+}
+#wrapper #content .contentMain .navPath a {
+  font-size: 12px;
+}
+#wrapper #content .contentMain .navPath i {
+  font-size: 12px;
+  padding: 0 5px;
+}
+#wrapper #content .contentMain .center {
+  margin: 15px 0 15px;
+}
+#wrapper #content .contentMain .center .left {
+  width: 400px;
+  display: flex;
+}
+#wrapper #content .contentMain .center .left .leftTop {
+  width: 400px;
+  position: relative;
+}
+#wrapper #content .contentMain .center .left .leftTop .smallPic {
+  width: 400px;
+  height: 400px;
+  border: 1px solid #dfdfdf;
+  position: relative;
+}
+#wrapper #content .contentMain .center .left .leftTop .smallPic .mask {
+  width: 200px;
+  height: 200px;
+  background: rgba(255, 255, 255, 0.5);
+  border: 1px solid #ddd;
+  position: absolute;
+  left: 0px;
+  top: 0px;
+}
+#wrapper #content .contentMain .center .left .leftTop .bigPic {
+  width: 400px;
+  height: 400px;
+  border: 1px solid #ddd;
+  position: absolute;
+  left: 420px;
+  top: 0px;
+  overflow: hidden;
+}
+#wrapper #content .contentMain .center .left .leftTop .bigPic img {
+  width: 800px;
+  height: 800px;
+  object-fit: cover;
+  position: absolute;
+  left: 0px;
+  top: 0px;
+}

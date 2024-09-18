@@ -1,0 +1,223 @@
+// outer wrapper element
+#wrapper{
+  // header section start
+  #header{
+    // top section
+    .headTop{
+      height: 30px;
+      background: #eaeaea;
+      // container element
+      .headTopMain{
+        width: 1200px;
+        display: flex;
+        justify-content:space-between ;
+        align-items: center;
+        margin: 0 auto;
+        // left side
+        .left{
+          height: 30px;
+          display: flex;
+          align-items: center;
+          h5{
+            margin-right: 5px;
+          }
+          p{
+            display: flex;
+            align-items: center;
+            a{
+                padding-left: 5px;
+            }
+            i {
+              display: inline-block;
+              border-right: 1px solid #b3aeae;
+              color:transparent; 
+            }
+          }
+        }
+        // right side
+        .right{
+            height: 30px;
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+          nav{
+             display: flex;
+             align-items: center;
+            a{
+              margin-right: 10px;
+              border-right: 1px solid #b3aeae;
+              padding-right: 10px;
+              &:last-child{
+                border: none;
+                margin-right: 0;
+                padding-right: 0;
+              }
+            }
+          }
+        }
+      }
+    }
+
+    // bottom section
+    .headBottom{
+      .headBottomMain{
+        width: 1200px;
+        margin: 0 auto;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        // left-side logo
+        .logo{
+          display: flex;
+          a{
+            img{
+              width: 175px;
+              height: 56px;
+              margin: 25px 45px;
+            }
+          }
+        }
+        // right-side search box
+        .search{
+          display: flex;
+          input{
+            // text box
+            &:first-child{
+              box-sizing: border-box;
+              width: 490px;
+              height: 32px;
+              padding:0 4px;
+              border: 3px solid #ea4a36;
+            }
+            // submit button
+            &:last-child{
+              width: 68px;
+              height: 32px;
+              color:#fff;
+              background: #ea4a36;
+              border: none;
+            }
+            // placeholder text
+            &::-webkit-input-placeholder{
+              color: yellowgreen;
+            }
+          }
+        }
+      }
+    } 
+  }
+  // header section end 
+
+// -----------------------
+    // navigation by category start
+    #navWrap {
+      border-bottom: 2px solid #e1251b;
+       // container element
+      .navWrapMain {
+        width: 1200px;
+        margin: 0 auto;
+        display: flex;
+        align-items: center;
+        a{
+          margin: 0 22px;
+          font-size: 16px;
+          color:#333;
+          &:first-child{
+            width: 210px;
+            height: 50px;
+            line-height: 50px;
+            text-align: center;
+            background: #e1251b;
+            color: #fff;
+            font-weight: bold;
+          }
+        }
+      }
+    }
+
+  // navigation by category end 
+
+// ------------------------
+
+    // content section start
+    #content {
+      // container element
+      .contentMain{
+        width: 1200px;
+        margin: 15px auto 0 auto;
+        // breadcrumb navigation
+        .navPath {
+          padding: 9px 15px 9px 0;
+          font-size: 0;
+          a {
+            font-size: 12px;
+          }
+          i {
+            font-size: 12px;
+            padding: 0 5px;
+          }
+        }
+        // breadcrumb navigation end
+
+        // middle section 
+        .center{
+          margin: 15px 0 15px;
+          .left{
+            width: 400px;
+            display: flex;
+            // 上边
+            .leftTop{
+                width: 400px;
+                position: relative;
+                .smallPic{
+                  width: 400px;
+                  height: 400px;
+                  border: 1px solid #dfdfdf;
+                  position:relative;
+                  // img{
+                  //   // position: absolute;
+                  // }
+                  // mask 蒙版
+                  .mask{
+                    width: 200px;
+                    height: 200px;
+                    background: rgba(255, 255, 255, .5);
+                    border: 1px solid #ddd;
+                    position: absolute;
+                    left:0px;
+                    top: 0px;
+                  }
+                }
+
+                .bigPic{
+                  width: 400px;
+                  height: 400px;
+                  border: 1px solid #ddd;
+                  position: absolute;
+                  left:420px;
+                  top: 0px;
+                  overflow: hidden;
+                  img{
+                    width: 800px;
+                    height: 800px;
+                    object-fit: cover;
+                    position: absolute;
+                    left: 0px;
+                    top: 0px
+                  }
+                }
+            }
+
+            // 下边
+          }
+        }
+        // middle section end
+      }
+    }
+
+
+
+    // content section end
+  
+// ---------------------------
+}
