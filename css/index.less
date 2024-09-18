@@ -162,6 +162,8 @@
         // middle section 
         .center{
           margin: 15px 0 15px;
+          display: flex;
+          justify-content: space-between;
           .left{
             width: 400px;
             // display: flex;
@@ -227,9 +229,13 @@
               .piclist{
                 width: 372px;
                 height: 56px;
+                position: relative;
+                overflow: hidden;
                 ul{
                   display: flex;
-                  overflow: hidden;
+                  position: absolute;
+                  left: 0px;
+                  transition: 0.5s;
                   li{
                     width: 50px;
                     height: 50px;
@@ -247,6 +253,101 @@
           }
 
           // right-side goods details
+          .right{
+            width: 700px;
+            padding-right:50px; 
+            // 商品详情数据结构快开始
+            .rightTop{
+               h3{
+                  font-size: 14px;
+                  line-height: 21px;
+                  margin-top: 15px;
+               }
+               > p{
+                  color: #e12228;
+                  margin-top: 15px;
+               }
+               .priceWrap{
+                    margin-top: 10px;
+                    line-height: 28px;
+                    background: #fee9ec;
+                    padding: 7px;
+                    .priceTop{
+                      display:flex;
+                       > span{
+                          margin-right: 15px;
+                       }
+                       .price{
+                         display: flex;
+                         color: #cc1122;
+                          > span{
+                            font-size: 16px;
+                          }
+                          p{
+                            font-size: 24px;
+                            font-weight: bold;
+                          }
+                          i{
+                            font-size: 12px;
+                            color: #cc1122;
+                          }
+                       }
+                      //  累计评价
+                       > p{
+                         margin-left:405px;
+                          // > span{
+                            
+                          // }
+                       }
+                    }
+                    .priceBottom{ 
+                      display: flex;
+                        // 促销
+                        > span{
+                          margin-right: 15px;
+                        }
+                        // 加价购
+                        p{
+                          width: 510px;
+                          line-height: 28px;
+                           > span{
+                            color:#999;   
+                            &:first-child{
+                               background: #c81623;
+                               padding: 3px;
+                               color:#fff;
+                            }
+                           }
+                        }
+                    }
+               }
+               .support{
+                  display: flex;
+                  margin-top: 10px;
+                  line-height: 28px;
+                  > span{
+                    margin-right: 15px;
+                  }
+                  > p{
+                    color: #999;
+                  }
+               }
+               .address{
+                  display: flex;
+                  margin-top: 10px;
+                  border-bottom: 1px solid #ededed;
+                  padding-bottom: 5px;
+                  line-height: 28px;
+                  > span{
+                     margin-right: 15px;
+                  }
+                  > p{
+                     color: #999;
+                  }
+               }
+            }
+            // 商品详情数据结构结束
+          }
 
           // right-side goods details end
 
@@ -254,8 +355,6 @@
         // middle section end
       }
     }
-
-
 
     // content section end
   

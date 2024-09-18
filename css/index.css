@@ -124,6 +124,8 @@
 }
 #wrapper #content .contentMain .center {
   margin: 15px 0 15px;
+  display: flex;
+  justify-content: space-between;
 }
 #wrapper #content .contentMain .center .left {
   width: 400px;
@@ -183,10 +185,14 @@
 #wrapper #content .contentMain .center .left .leftBottom .piclist {
   width: 372px;
   height: 56px;
+  position: relative;
+  overflow: hidden;
 }
 #wrapper #content .contentMain .center .left .leftBottom .piclist ul {
   display: flex;
-  overflow: hidden;
+  position: absolute;
+  left: 0px;
+  transition: 0.5s;
 }
 #wrapper #content .contentMain .center .left .leftBottom .piclist ul li {
   width: 50px;
@@ -198,4 +204,89 @@
 #wrapper #content .contentMain .center .left .leftBottom .piclist ul li img {
   width: 50px;
   height: 50px;
+}
+#wrapper #content .contentMain .center .right {
+  width: 700px;
+  padding-right: 50px;
+}
+#wrapper #content .contentMain .center .right .rightTop h3 {
+  font-size: 14px;
+  line-height: 21px;
+  margin-top: 15px;
+}
+#wrapper #content .contentMain .center .right .rightTop > p {
+  color: #e12228;
+  margin-top: 15px;
+}
+#wrapper #content .contentMain .center .right .rightTop .priceWrap {
+  margin-top: 10px;
+  line-height: 28px;
+  background: #fee9ec;
+  padding: 7px;
+}
+#wrapper #content .contentMain .center .right .rightTop .priceWrap .priceTop {
+  display: flex;
+}
+#wrapper #content .contentMain .center .right .rightTop .priceWrap .priceTop > span {
+  margin-right: 15px;
+}
+#wrapper #content .contentMain .center .right .rightTop .priceWrap .priceTop .price {
+  display: flex;
+  color: #cc1122;
+}
+#wrapper #content .contentMain .center .right .rightTop .priceWrap .priceTop .price > span {
+  font-size: 16px;
+}
+#wrapper #content .contentMain .center .right .rightTop .priceWrap .priceTop .price p {
+  font-size: 24px;
+  font-weight: bold;
+}
+#wrapper #content .contentMain .center .right .rightTop .priceWrap .priceTop .price i {
+  font-size: 12px;
+  color: #cc1122;
+}
+#wrapper #content .contentMain .center .right .rightTop .priceWrap .priceTop > p {
+  margin-left: 405px;
+}
+#wrapper #content .contentMain .center .right .rightTop .priceWrap .priceBottom {
+  display: flex;
+}
+#wrapper #content .contentMain .center .right .rightTop .priceWrap .priceBottom > span {
+  margin-right: 15px;
+}
+#wrapper #content .contentMain .center .right .rightTop .priceWrap .priceBottom p {
+  width: 510px;
+  line-height: 28px;
+}
+#wrapper #content .contentMain .center .right .rightTop .priceWrap .priceBottom p > span {
+  color: #999;
+}
+#wrapper #content .contentMain .center .right .rightTop .priceWrap .priceBottom p > span:first-child {
+  background: #c81623;
+  padding: 3px;
+  color: #fff;
+}
+#wrapper #content .contentMain .center .right .rightTop .support {
+  display: flex;
+  margin-top: 10px;
+  line-height: 28px;
+}
+#wrapper #content .contentMain .center .right .rightTop .support > span {
+  margin-right: 15px;
+}
+#wrapper #content .contentMain .center .right .rightTop .support > p {
+  color: #999;
+}
+#wrapper #content .contentMain .center .right .rightTop .address {
+  display: flex;
+  margin-top: 10px;
+  border-bottom: 1px solid #ededed;
+  padding-bottom: 5px;
+  line-height: 28px;
+}
+#wrapper #content .contentMain .center .right .rightTop .address > span {
+  margin-right: 15px;
+}
+#wrapper #content .contentMain .center .right .rightTop .address > p {
+  color: #999;
 }

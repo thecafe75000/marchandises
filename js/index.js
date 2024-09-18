@@ -1,4 +1,7 @@
 window.onload = function () {
+  // 声明一个记录点击的缩略图下标
+  var bigimgIndex = 0
+
   // 路径导航的数据渲染
   function navPathDataBind() {
     // 获取页面元素
@@ -29,11 +32,9 @@ window.onload = function () {
       }
     })
   }
-
   navPathDataBind()
 
-
-  // 放大镜的移入移出
+  // 放大镜的移入、移出效果
   function bigGlassBind() {
     // 获取小图框元素
     var smallPic = document.querySelector(
@@ -44,6 +45,9 @@ window.onload = function () {
     var leftTop = document.querySelector(
       '#wrapper #content .contentMain .center .left .leftTop '
     )
+
+    // 获取数据
+    var imagessrc = goodData.imagessrc
 
     // 设置移入事件
     smallPic.onmouseenter = function () {
@@ -57,7 +61,7 @@ window.onload = function () {
 
       // 创建大图片元素
       var bigImg = document.createElement('img')
-      bigImg.src = 'images/b1.png'
+      bigImg.src = imagessrc[bigimgIndex].b
 
       // 大图框里追加大图片
       BigPic.appendChild(bigImg)
@@ -68,36 +72,41 @@ window.onload = function () {
       // 让leftTop元素追加大图框
       leftTop.appendChild(BigPic)
 
-
       // 设置移动事件
       smallPic.onmousemove = function (event) {
-        var leftDistance = event.clientX - smallPic.getBoundingClientRect().left - maskDiv.offsetWidth / 2
-        var topDistance = event.clientY - smallPic.getBoundingClientRect().top - maskDiv.offsetHeight / 2
-        
+        var leftDistance =
+          event.clientX -
+          smallPic.getBoundingClientRect().left -
+          maskDiv.offsetWidth / 2
+        var topDistance =
+          event.clientY -
+          smallPic.getBoundingClientRect().top -
+          maskDiv.offsetHeight / 2
+
         // 设置蒙版的活动边界
         if (leftDistance < 0) {
           leftDistance = 0
-        } else if(leftDistance > smallPic.clientWidth - maskDiv.offsetWidth) {
+        } else if (leftDistance > smallPic.clientWidth - maskDiv.offsetWidth) {
           leftDistance = smallPic.clientWidth - maskDiv.offsetWidth
         }
 
         if (topDistance < 0) {
           topDistance = 0
-        } else if(topDistance > smallPic.clientHeight - maskDiv.offsetHeight) {
+        } else if (topDistance > smallPic.clientHeight - maskDiv.offsetHeight) {
           topDistance = smallPic.clientHeight - maskDiv.offsetHeight
         }
-        
+
         // 设置蒙版的left和top值
         maskDiv.style.left = leftDistance + 'px'
         maskDiv.style.top = topDistance + 'px'
 
         // 设置放大镜的移动比例
-        var scale = (smallPic.clientWidth - maskDiv.offsetWidth) / (bigImg.offsetWidth - BigPic.clientWidth)
-        bigImg.style.left = - leftDistance / scale + 'px'
-        bigImg.style.top = - topDistance / scale + 'px'
-
+        var scale =
+          (smallPic.clientWidth - maskDiv.offsetWidth) /
+          (bigImg.offsetWidth - BigPic.clientWidth)
+        bigImg.style.left = -leftDistance / scale + 'px'
+        bigImg.style.top = -topDistance / scale + 'px'
       }
-
 
       // 设置移出事件
       smallPic.onmouseleave = function () {
@@ -109,7 +118,157 @@ window.onload = function () {
       }
     }
   }
-
   bigGlassBind()
-  
+
+  // 动态渲染放大镜缩略图的数据
+  function thunbnailData() {
+    // 获取piclist下的ul元素
+    var ul = document.querySelector(
+      '#wrapper #content .contentMain .center .left .leftBottom .piclist ul'
+    )
+
+    // 获取imagessrc数据
+    var imagessrc = goodData.imagessrc
+    imagessrc.map((item, index) => {
+      // console.log(item)
+
+      // 创建li元素和image元素
+      var newli = document.createElement('li')
+      var newImg = document.createElement('img')
+      newImg.src = item.s
+
+      // 给li追加img元素
+      newli.appendChild(newImg)
+
+      // 给ul追加li元素
+      ul.appendChild(newli)
+    })
+  }
+  thunbnailData()
+
+  // 点击缩略图的效果
+  function thumbnailClick() {
+    var smallPic_img = document.querySelector(
+      '#wrapper #content .contentMain .center .left .leftTop .smallPic img'
+    )
+
+    var imagessrc = goodData.imagessrc
+
+    // 小图路径要默认和数据里imagessrc的第1个数组元素小图的路径一致
+    smallPic_img.src = imagessrc[0].s
+
+    // 获取所有的li元素
+    var liNodes = document.querySelectorAll(
+      '#wrapper #content .contentMain .center .left .leftBottom .piclist ul li'
+    )
+    // console.log(typeof liNodes) // object
+
+    // 循环点击所有的li
+    // 先把liNodes转为数组再遍历
+    Array.from(liNodes).map((item, index) => {
+      // console.log(index)
+      item.onclick = function () {
+        bigimgIndex = index
+
+        // 变换小图路径
+        smallPic_img.src = imagessrc[index].s
+      }
+    })
+  }
+  thumbnailClick()
+
+  // 点击缩略图左右箭头轮播图效果
+  function thumbnailLeftRightClick() {
+    // 获取左右两端的箭头按钮
+    var prevButton = document.querySelector(
+      '#wrapper #content .contentMain .center .left .leftBottom a.prev'
+    )
+    var nextButton = document.querySelector(
+      '#wrapper #content .contentMain .center .left .leftBottom a.next'
+    )
+
+    // 获取轮播相关的ul元素和所有的li
+    var ul = document.querySelector(
+      '#wrapper #content .contentMain .center .left .leftBottom .piclist ul'
+    )
+    var liNodes = document.querySelectorAll(
+      '#wrapper #content .contentMain .center .left .leftBottom .piclist ul li'
+    )
+
+    // 必要的计算：轮播的起点，轮播的步长，总体轮播的距离值
+    // 轮播开始起点
+    var start = 0
+    // 轮播的步长
+    var step = (liNodes[0].offsetWidth + 20) * 2
+    // 总体运动的距离值 = ul的宽 - div的宽 = （数据里图片的总数量 - div中显示的图片数量即5张图）* (一个li的宽 + margin的大小即20)
+    var endPosition = (liNodes.length - 5) * (liNodes[0].offsetWidth + 20)
+
+    // 点击事件触发轮播
+    prevButton.onclick = function () {
+      start -= step
+      if (start < 0) {
+        start = 0
+      }
+      ul.style.left = -start + 'px'
+    }
+
+    nextButton.onclick = function () {
+      start += step
+      if (start > endPosition) {
+        start = endPosition
+      }
+      ul.style.left = -start + 'px'
+    }
+  }
+  thumbnailLeftRightClick()
+
+  // 商品详情数据的动态渲染
+  function rightTopData() {
+    // 找到rightTop元素
+    var rightTop = document.querySelector(
+      '#wrapper #content .contentMain .center .right .rightTop'
+    )
+
+    // 获取数据源 data.js -> goodData -> goodsDetail
+    var goodsDetail = goodData.goodsDetail
+
+    // 建立一个字符串变量，把原来的布局结构贴进来，将获取的数据放在其对应的位置上重新渲染rightTop元素
+    var str = `
+                <h3>${goodsDetail.title}</h3>
+                <p>${goodsDetail.recommend}</p>
+                <div class="priceWrap">
+                    <div class="priceTop">
+                        <span>价&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;格</span>
+                        <div class="price">
+                          <span>￥</span>
+                          <p>${goodsDetail.price}</p>
+                          <i>降价通知</i>
+                        </div>
+                        <p>
+                          <span>累计评价</span>
+                          <span>${goodsDetail.evaluateNum}</span>
+                        </p>
+                    </div>
+                  <div class="priceBottom">
+                      <span>促&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;销</span>
+                      <p>
+                        <span>${goodsDetail.promoteSales.type}</span>
+                        <span>${goodsDetail.promoteSales.content}</span>
+                      </p>
+                  </div>
+                </div>
+                <div class="support">
+                  <span>支&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;持</span>
+                  <p>${goodsDetail.support}</p>
+                </div>
+                <div class="address">
+                  <span>配&nbsp;送&nbsp;至</span>
+                  <p>${goodsDetail.address}</p>
+                </div>
+            `
+
+    // 重新渲染rightTop元素
+    rightTop.innerHTML = str
+  }
+  rightTopData()
 }
