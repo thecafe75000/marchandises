@@ -209,6 +209,9 @@ window.onload = function () {
       if (start < 0) {
         start = 0
       }
+      // 当你设置 ul.style.left = -start + 'px'，你将 ul 向左移动（通过负值实现）
+      // 这是因为 position: absolute 允许根据 left、right、top、bottom 等属性来精确控制位置
+      // 动态改变 ul 的 left 值，控制图片组水平移动，从而实现图片的轮播效果
       ul.style.left = -start + 'px'
     }
 
@@ -221,6 +224,7 @@ window.onload = function () {
     }
   }
   thumbnailLeftRightClick()
+
 
   // 商品详情数据的动态渲染
   function rightTopData() {
@@ -271,4 +275,80 @@ window.onload = function () {
     rightTop.innerHTML = str
   }
   rightTopData()
+
+
+  // 商品参数数据的动态渲染
+  function rightBottomData() {
+    // 获取元素对象
+    var choseWrap = document.querySelector(
+      '#wrapper #content .contentMain .center .right .rightBottom .choseWrap'
+    )
+
+    // 获取数据源 data.js -> goodData -> goodsDetail -> crumbData
+    var crumbData = goodData.goodsDetail.crumbData
+    // console.log(crumbData)
+
+    // 数据是一个数组,需要遍历它，并且需要一个动态的dl元素对象(包括dt,dd)
+    crumbData.map(item => {
+      // 创建dl,dt, dd元素对象
+      var dlNode = document.createElement('dl')
+
+      var dtNode = document.createElement('dt')
+      dtNode.innerText = item.title
+
+      // dl里追加dt
+      dlNode.appendChild(dtNode)
+
+      // 遍历dd元素,即数据源data.js里 crumbData -> data
+      item.data.map(subitem => {
+        //  创建dd元素
+        var ddNode = document.createElement('dd')
+        ddNode.innerText = subitem.type
+
+        // dl里追加dd
+        dlNode.appendChild(ddNode)
+      })
+
+      // choseWrap里追加dl
+      choseWrap.appendChild(dlNode)
+    })
+  }
+  rightBottomData()
+
+
+  // 点击商品参数之后的颜色排他效果
+  function clickbbBind() {
+    // 获取所有的dl元素, 取其中第1个dl元素下的所有dd先做测试,测试完毕后在dl里嵌套一个循环
+    var dlNodes = document.querySelectorAll(
+      '#wrapper #content .contentMain .center .right .rightBottom .choseWrap dl'
+    )
+    // console.log(typeof dlNodes) // object
+
+    Array.from(dlNodes).map((dlitem) => {
+        var ddNodes = dlitem.querySelectorAll('dd')
+
+        // 循环所有的dd元素, 并添加点击事件
+        Array.from(ddNodes).map(dditem => {
+          dditem.onclick = function () {
+            // 先将所有的元素颜色重置为#666
+            Array.from(ddNodes).forEach((dditem) => {
+              dditem.style.color = '#666'
+            })
+            // 再将当前点击的元素颜色设置为红色
+            this.style.color = '#cc1122'
+          }
+        })
+    })
+
+    // 获取所有的dt元素,将其文字加粗
+    var dtNodes = document.querySelectorAll(
+      '#wrapper #content .contentMain .center .right .rightBottom .choseWrap dt'
+    )
+    Array.from(dtNodes).map(dtitem => {
+      dtitem.style.fontWeight = 'bold'
+    })
+  }
+  clickbbBind()
+
+
 }

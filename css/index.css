@@ -207,7 +207,6 @@
 }
 #wrapper #content .contentMain .center .right {
   width: 700px;
-  padding-right: 50px;
 }
 #wrapper #content .contentMain .center .right .rightTop h3 {
   font-size: 14px;
@@ -289,4 +288,29 @@
 }
 #wrapper #content .contentMain .center .right .rightTop .address > p {
   color: #999;
+}
+#wrapper #content .contentMain .center .right .rightBottom {
+  margin-top: 10px;
+  line-height: 28px;
+}
+#wrapper #content .contentMain .center .right .rightBottom .choseWrap dl {
+  display: flex;
+  margin-top: 13px;
+  margin-bottom: 13px;
+}
+#wrapper #content .contentMain .center .right .rightBottom .choseWrap dl dt {
+  margin-right: 15px;
+}
+#wrapper #content .contentMain .center .right .rightBottom .choseWrap dl dd {
+  margin-right: 5px;
+  color: #666;
+  line-height: 24px;
+  padding: 2px 14px;
+  border-top: 1px solid #eee;
+  border-left: 1px solid #eee;
+  border-right: 1px solid #bbb;
+  border-bottom: 1px solid #bbb;
+}
+#wrapper #content .contentMain .center .right .rightBottom .choseWrap dl dd:first-of-type {
+  color: #cc1122;
 }

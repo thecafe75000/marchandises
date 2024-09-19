@@ -191,6 +191,7 @@
                   }
                 }
 
+                // 被放大镜放大的图片
                 .bigPic{
                   width: 400px;
                   height: 400px;
@@ -226,6 +227,7 @@
                   margin-right:4px;
                 }
               }
+              // 轮播图
               .piclist{
                 width: 372px;
                 height: 56px;
@@ -255,8 +257,8 @@
           // right-side goods details
           .right{
             width: 700px;
-            padding-right:50px; 
-            // 商品详情数据结构快开始
+            // 上半部分
+            // 商品详情数据结构开始
             .rightTop{
                h3{
                   font-size: 14px;
@@ -347,6 +349,39 @@
                }
             }
             // 商品详情数据结构结束
+
+            // 下半部分
+            .rightBottom{
+                margin-top: 10px;
+                line-height: 28px;
+                // 商品参数的选择区域开始
+                .choseWrap {
+                    dl{
+                      display: flex;
+                      margin-top: 13px;
+                      margin-bottom: 13px;
+                      dt {
+                        margin-right: 15px;
+                      }
+                      dd{
+                        margin-right: 5px;
+                        color: #666;
+                        line-height: 24px;
+                        padding: 2px 14px;
+                        border-top: 1px solid #eee;
+                        border-left: 1px solid #eee;
+                        border-right: 1px solid #bbb;
+                        border-bottom: 1px solid #bbb;
+
+                        &:first-of-type{
+                          color: #cc1122;
+                        }
+                      }
+                    }
+                }
+                // 商品参数的选择区域结束
+            }
+
           }
 
           // right-side goods details end
