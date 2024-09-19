@@ -293,6 +293,22 @@
   margin-top: 10px;
   line-height: 28px;
 }
+#wrapper #content .contentMain .center .right .rightBottom .choose {
+  display: flex;
+}
+#wrapper #content .contentMain .center .right .rightBottom .choose .mark {
+  height: 30px;
+  background: snow;
+  border: 1px solid #ddd;
+  padding: 0 20px;
+  margin-right: 20px;
+  text-align: center;
+  line-height: 30px;
+}
+#wrapper #content .contentMain .center .right .rightBottom .choose a {
+  color: #cc1122;
+  margin-left: 20px;
+}
 #wrapper #content .contentMain .center .right .rightBottom .choseWrap dl {
   display: flex;
   margin-top: 13px;

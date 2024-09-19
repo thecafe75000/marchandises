@@ -34,6 +34,7 @@ window.onload = function () {
   }
   navPathDataBind()
 
+
   // 放大镜的移入、移出效果
   function bigGlassBind() {
     // 获取小图框元素
@@ -120,6 +121,7 @@ window.onload = function () {
   }
   bigGlassBind()
 
+
   // 动态渲染放大镜缩略图的数据
   function thunbnailData() {
     // 获取piclist下的ul元素
@@ -145,6 +147,7 @@ window.onload = function () {
     })
   }
   thunbnailData()
+
 
   // 点击缩略图的效果
   function thumbnailClick() {
@@ -176,6 +179,7 @@ window.onload = function () {
     })
   }
   thumbnailClick()
+
 
   // 点击缩略图左右箭头轮播图效果
   function thumbnailLeftRightClick() {
@@ -224,7 +228,6 @@ window.onload = function () {
     }
   }
   thumbnailLeftRightClick()
-
 
   // 商品详情数据的动态渲染
   function rightTopData() {
@@ -289,7 +292,7 @@ window.onload = function () {
     // console.log(crumbData)
 
     // 数据是一个数组,需要遍历它，并且需要一个动态的dl元素对象(包括dt,dd)
-    crumbData.map(item => {
+    crumbData.map((item) => {
       // 创建dl,dt, dd元素对象
       var dlNode = document.createElement('dl')
 
@@ -300,7 +303,7 @@ window.onload = function () {
       dlNode.appendChild(dtNode)
 
       // 遍历dd元素,即数据源data.js里 crumbData -> data
-      item.data.map(subitem => {
+      item.data.map((subitem) => {
         //  创建dd元素
         var ddNode = document.createElement('dd')
         ddNode.innerText = subitem.type
@@ -312,6 +315,7 @@ window.onload = function () {
       // choseWrap里追加dl
       choseWrap.appendChild(dlNode)
     })
+    
   }
   rightBottomData()
 
@@ -324,31 +328,65 @@ window.onload = function () {
     )
     // console.log(typeof dlNodes) // object
 
-    Array.from(dlNodes).map((dlitem) => {
-        var ddNodes = dlitem.querySelectorAll('dd')
-
-        // 循环所有的dd元素, 并添加点击事件
-        Array.from(ddNodes).map(dditem => {
-          dditem.onclick = function () {
-            // 先将所有的元素颜色重置为#666
-            Array.from(ddNodes).forEach((dditem) => {
-              dditem.style.color = '#666'
-            })
-            // 再将当前点击的元素颜色设置为红色
-            this.style.color = '#cc1122'
-          }
-        })
-    })
-
-    // 获取所有的dt元素,将其文字加粗
-    var dtNodes = document.querySelectorAll(
-      '#wrapper #content .contentMain .center .right .rightBottom .choseWrap dt'
+    var choose = document.querySelector(
+      '#wrapper #content .contentMain .center .right .rightBottom .choose'
     )
-    Array.from(dtNodes).map(dtitem => {
-      dtitem.style.fontWeight = 'bold'
+
+    // 首先创建一个可容纳点击的dd元素值的容器即一个数组, 确定数组的起始长度并初始化值为null
+    var arr = new Array(dlNodes.length).fill(null)
+    // console.log(arr)
+
+    Array.from(dlNodes).map((dlitem,dlindex) => {
+      var ddNodes = dlitem.querySelectorAll('dd')
+
+      // 循环所有的dd元素, 并添加点击事件
+      Array.from(ddNodes).map((dditem) => {
+        dditem.onclick = function () {
+          // 清空.choose的div元素
+          choose.innerHTML = ''
+
+          // 先将所有的元素颜色重置为#666
+          Array.from(ddNodes).forEach((dditem) => {
+            dditem.style.color = '#666'
+          })
+          // 再将当前点击的元素颜色设置为红色
+          this.style.color = '#cc1122'
+          // console.log('this', this)
+
+          // 点击哪一个dd元素动态产生一个新的mark标记元素
+          // 然后再将点击的dd元素的值按照对应下标来写入到数组的元素身上
+          arr[dlindex] = this.innerText
+
+          // 遍历arr数组,将非0元素的值写入到mark标记中
+          arr.forEach((value) => {
+            // 只要有value, 就动态创建mark标签
+            if (value) {
+              // 创建div元素,并且设置其class属性为mark
+              var markDiv = document.createElement('div')
+              markDiv.className = 'mark'
+              markDiv.innerText = value
+
+              // 创建a元素,并且设置其值为X
+              var aNode = document.createElement('a')
+              aNode.innerText = 'X'
+
+              // 给div里追加a
+              markDiv.appendChild(aNode)
+
+              // 让.choose的div元素追加.mark的div元素
+              choose.appendChild(markDiv)
+            }
+          })
+        }
+      })
     })
   }
+
   clickbbBind()
 
-
+ 
 }
+
+
+
+
