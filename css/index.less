@@ -488,7 +488,9 @@
               .aslideContent{
                  padding: 10px;
                  div{
+                    display: none;
                     &.active{
+                      display: block;
                        ul{
                           &.goodslist1{
                             display: flex;
@@ -552,7 +554,7 @@
             .rightDetail{
                width: 980px;
                margin-left: 8px;
-                // 选择搭配
+                // 选择搭配开始
                 .chooseBox{
                   border: 1px solid #ddd;
                   margin-bottom: 15px;
@@ -642,6 +644,48 @@
                            }    
                         }
                     }
+                }
+
+
+                // 选项卡开始
+                .bottomDetail{
+                  // 菜单
+                  .tabBtns{
+                      background: #ededed;
+                      display: flex;
+                      li{
+                        border-top:1px solid #ddd;
+                        border-bottom:1px solid #ddd;
+                        background: #fff;
+                        border-left: 1px solid #ddd;
+                        height: 40px;
+                        padding: 0 11px;
+                        text-align: center;
+                        line-height: 40px;
+                        &.active{
+                          background-color:#cc1122; 
+                          a{
+                            color:#fff;
+                          }
+                        }
+                        &:last-child{
+                          border-right: 1px solid #ddd;
+                        }
+                      }
+                  }
+
+                  // 内容
+                  .tabContents{
+                     div{
+                        padding-left: 20px;
+                        line-height: 25px;
+                        display: none;
+                        &.active{
+                          margin: 10px 0px;
+                          display: block;
+                        }
+                     }
+                  }
                 }
 
             }

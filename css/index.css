@@ -404,6 +404,12 @@
 #wrapper #content .contentMain .goodsDetailWrap .leftAside .aslideContent {
   padding: 10px;
 }
+#wrapper #content .contentMain .goodsDetailWrap .leftAside .aslideContent div {
+  display: none;
+}
+#wrapper #content .contentMain .goodsDetailWrap .leftAside .aslideContent div.active {
+  display: block;
+}
 #wrapper #content .contentMain .goodsDetailWrap .leftAside .aslideContent div.active ul.goodslist1 {
   display: flex;
   flex-wrap: wrap;
@@ -528,4 +534,36 @@
   color: #fff;
   background: #e1251b;
   border: none;
+}
+#wrapper #content .contentMain .goodsDetailWrap .rightDetail .bottomDetail .tabBtns {
+  background: #ededed;
+  display: flex;
+}
+#wrapper #content .contentMain .goodsDetailWrap .rightDetail .bottomDetail .tabBtns li {
+  border-top: 1px solid #ddd;
+  border-bottom: 1px solid #ddd;
+  background: #fff;
+  border-left: 1px solid #ddd;
+  height: 40px;
+  padding: 0 11px;
+  text-align: center;
+  line-height: 40px;
+}
+#wrapper #content .contentMain .goodsDetailWrap .rightDetail .bottomDetail .tabBtns li.active {
+  background-color: #cc1122;
+}
+#wrapper #content .contentMain .goodsDetailWrap .rightDetail .bottomDetail .tabBtns li.active a {
+  color: #fff;
+}
+#wrapper #content .contentMain .goodsDetailWrap .rightDetail .bottomDetail .tabBtns li:last-child {
+  border-right: 1px solid #ddd;
+}
+#wrapper #content .contentMain .goodsDetailWrap .rightDetail .bottomDetail .tabContents div {
+  padding-left: 20px;
+  line-height: 25px;
+  display: none;
+}
+#wrapper #content .contentMain .goodsDetailWrap .rightDetail .bottomDetail .tabContents div.active {
+  margin: 10px 0px;
+  display: block;
 }

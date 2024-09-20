@@ -511,6 +511,63 @@ window.onload = function () {
 
   }
   choosePricefn()
+
+
+  // 封装一个公共的选项卡函数
+  function chooseTabfn(tabBtns, tabConts) {
+    var arrtabBtns = Array.from(tabBtns)
+    var arrtabConts = Array.from(tabConts)
+
+    // 被点击的元素 tabBtns
+    arrtabBtns.map((item,i) => {
+      item.myindex = i
+      item.onclick = function () {
+        arrtabBtns.map((item, index) => {
+          item.className = ''
+          arrtabConts[index].className = ''
+        })
+        this.className = 'active'
+        arrtabConts[this.myindex].className = 'active'
+      }
+    })
+    // 被切换显示的元素 tabConts
+  }
+
+
+  // 点击左侧相关分类/推荐品牌选项卡
+  function leftTab() {
+    // 被点击的元素
+    var h4s = document.querySelectorAll(
+      '#wrapper #content .contentMain .goodsDetailWrap .leftAside .asideTop h4'
+    )
+    
+    // 被切换显示的元素
+    var divs = document.querySelectorAll(
+      '#wrapper #content .contentMain .goodsDetailWrap .leftAside .aslideContent>div'
+    )
+
+    // 调用封装好的公共选项卡函数
+    chooseTabfn(h4s,divs)
+  }
+  leftTab()
+
+
+  // 点击右侧商品介绍、规格包装等区域的选项卡
+  function rightTab() {
+    // 被点击的元素
+    var lis = document.querySelectorAll(
+      '#wrapper #content .contentMain .goodsDetailWrap .rightDetail .bottomDetail .tabBtns li'
+    )
+
+    // 被切换显示的元素
+    var divs = document.querySelectorAll(
+      '#wrapper #content .contentMain .goodsDetailWrap .rightDetail .bottomDetail .tabContents div'
+    )
+
+    // 调用封装好的公共选项卡函数
+    chooseTabfn(lis, divs)
+  }
+  rightTab()
  
 }
 
