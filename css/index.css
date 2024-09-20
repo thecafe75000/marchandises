@@ -443,6 +443,7 @@
   color: #c81623;
 }
 #wrapper #content .contentMain .goodsDetailWrap .leftAside .aslideContent div.active ul.goodslist2 li .button {
+  display: block;
   margin-top: 5px;
   margin-bottom: 5px;
   padding: 2px 14px;
