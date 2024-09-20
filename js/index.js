@@ -75,14 +75,8 @@ window.onload = function () {
 
       // 设置移动事件
       smallPic.onmousemove = function (event) {
-        var leftDistance =
-          event.clientX -
-          smallPic.getBoundingClientRect().left -
-          maskDiv.offsetWidth / 2
-        var topDistance =
-          event.clientY -
-          smallPic.getBoundingClientRect().top -
-          maskDiv.offsetHeight / 2
+        var leftDistance = event.clientX - smallPic.getBoundingClientRect().left - maskDiv.offsetWidth / 2
+        var topDistance = event.clientY - smallPic.getBoundingClientRect().top - maskDiv.offsetHeight / 2
 
         // 设置蒙版的活动边界
         if (leftDistance < 0) {
@@ -102,9 +96,7 @@ window.onload = function () {
         maskDiv.style.top = topDistance + 'px'
 
         // 设置放大镜的移动比例
-        var scale =
-          (smallPic.clientWidth - maskDiv.offsetWidth) /
-          (bigImg.offsetWidth - BigPic.clientWidth)
+        var scale = (smallPic.clientWidth - maskDiv.offsetWidth) / (bigImg.offsetWidth - BigPic.clientWidth)
         bigImg.style.left = -leftDistance / scale + 'px'
         bigImg.style.top = -topDistance / scale + 'px'
       }
@@ -435,6 +427,7 @@ window.onload = function () {
     var oldPrice = document.querySelector(
       '#wrapper #content .contentMain .center .right .rightTop .priceWrap .priceTop .price p'
     )
+    
 
     // 取出默认的价格
     var price = goodData.goodsDetail.price
@@ -454,8 +447,70 @@ window.onload = function () {
     // 最后将计算之后的结果重新渲染到p标签里
     oldPrice.innerText = price
 
+    // 将变化后的价格写入左侧标签里
+   var leftprice = document.querySelector(
+     '#wrapper #content .contentMain .goodsDetailWrap .rightDetail .chooseBox .listWrap .left p'
+   )
+    
+    leftprice.innerText = '￥' + price
+    
+    // 遍历选择搭配中所有的复选框元素, 检查看是否有选中的附加价格
+    var ipts = document.querySelectorAll(
+      '#wrapper #content .contentMain .goodsDetailWrap .rightDetail .chooseBox .listWrap .middle li input'
+    )
+    var arrIpts = Array.from(ipts)
+
+    arrIpts.map((arript) => {
+      if (arript.checked) {
+         price += Number(arript.value)
+       }
+    })
+
+    // 右侧的套餐价价格重新渲染
+    var newprice = document.querySelector(
+      '#wrapper #content .contentMain .goodsDetailWrap .rightDetail .chooseBox .listWrap .right i'
+    )
+
+    newprice.innerText = '￥' + price
+
   }
 
+
+  // 选择搭配中间区域复选框选择套餐价的变动效果
+  function choosePricefn() {
+    // 获取中间区域中所有的复选框元素
+    var ipts = document.querySelectorAll(
+      '#wrapper #content .contentMain .goodsDetailWrap .rightDetail .chooseBox .listWrap .middle li input'
+    )
+
+    var leftprice = document.querySelector(
+      '#wrapper #content .contentMain .goodsDetailWrap .rightDetail .chooseBox .listWrap .left p'
+    )
+    
+    var newprice = document.querySelector(
+      '#wrapper #content .contentMain .goodsDetailWrap .rightDetail .chooseBox .listWrap .right i'
+    )
+
+    var arrIpts = Array.from(ipts)
+
+      // 遍历复选框元素，取出它们的价格，和之前的套餐价累加，累加之后重新写回套餐价标签里
+      arrIpts.map((iptsItem) => {
+        iptsItem.onclick = function () {
+          var oldprice = Number(leftprice.innerText.slice(1))
+          arrIpts.map((iptsItem) => {
+            if (iptsItem.checked) {
+              // 新价格= 左侧的价格 + 选中复选框里的附加价格 
+              oldprice += Number(iptsItem.value)
+            }
+          })
+
+          // 重新写回到套餐价标签里
+          newprice.innerText = '￥' + oldprice
+        }
+      })
+
+  }
+  choosePricefn()
  
 }
 

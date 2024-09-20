@@ -54,8 +54,9 @@ hr {
 html { overflow-y: scroll; }
 
 a:link:hover{
-     color : lightgreen !important;
-     text-decoration: underline;
+     /* color : lightgreen !important; */
+     color:#cc1122 !important;
+     text-decoration: none;
  }
 
 input{ /*去除外轮廓*/
