@@ -568,6 +568,36 @@ window.onload = function () {
     chooseTabfn(lis, divs)
   }
   rightTab()
+
+
+  // 右边侧边栏的点击效果
+  function rightAsideBind(){
+    // 先找到按钮元素，发生点击事件
+    var btns = document.querySelector('#wrapper .rightAside .btns')
+
+    // 记录初始状态，然后在点击事件的内部进行判断
+    var flag = true;
+
+    // 获取侧边栏元素
+    var rightAside = document.querySelector('#wrapper .rightAside')
+
+    btns.onclick = function () {
+      // 判断
+      if (flag) {
+        // 展开
+        btns.className = 'btns btnsOpen'
+        rightAside.className = 'rightAside asideOpen'
+      } else {
+        // 关闭
+        btns.className = 'btns btnsClose'
+        rightAside.className = 'rightAside asideClose'
+      }
+
+      // 无论前面的if判断执行的到底是谁，最终flag的状态都是在原来的基础上取反
+      flag = !flag
+    }
+  }
+  rightAsideBind()
  
 }
 
